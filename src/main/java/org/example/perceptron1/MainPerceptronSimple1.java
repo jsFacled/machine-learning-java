@@ -9,10 +9,10 @@ import static org.example.perceptron1.PerceptronSimple1.multiplicacionEscalar;
 public class MainPerceptronSimple1 {
     public static void main(String[] args) {
         //Pruebo la multiplicacion escalar
-        List<Double> vector1 = new ArrayList<>();
-        vector1.add(1.0);
-        vector1.add(2.0);
-        vector1.add(3.0);
+        List<Integer> vector1 = new ArrayList<>();
+        vector1.add(1);
+        vector1.add(2);
+        vector1.add(3);
 
         List<Double> vector2 = new ArrayList<>();
         vector2.add(4.0);
@@ -20,7 +20,7 @@ public class MainPerceptronSimple1 {
         vector2.add(6.0);
 
         //Otra forma
-        List<Double> vector3 = Arrays.asList(7.0, 8.0, 9.0);
+        List<Integer> vector3 = Arrays.asList(7, 8, 9);
         List<Double> vector4 = Arrays.asList(10.0, 11.0, 12.0);
         double resultado = multiplicacionEscalar(vector1, vector2);
         System.out.println("Multiplicación Escalar: " + resultado);
@@ -31,7 +31,7 @@ public class MainPerceptronSimple1 {
 
         /*
               --------------------------------------
-              ----  Pruebo el PerceptronPython  ----
+              ----  Pruebo el PerceptronSimple1  ----
               --------------------------------------
         */
 
@@ -45,9 +45,9 @@ public class MainPerceptronSimple1 {
         int ahorro = 10000;
 
         // Representamos a la persona
-        List<Double> entradas = new ArrayList<>();
-        entradas.add((double) edad);
-        entradas.add((double) ahorro);
+        List<Integer> entradas = new ArrayList<>();
+        entradas.add((int) edad);
+        entradas.add((int) ahorro);
 
         // Calculamos la salida del perceptrón
         int salida = PerceptronSimple1.activationFunction(entradas, pesos, umbral);
