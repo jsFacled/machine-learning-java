@@ -79,6 +79,10 @@ public class MainPerceptronSimple1 {
         List<Integer> vectorEntrada = Arrays.asList(1, 2, 3);
         PerceptronSimple1 perceptron = new PerceptronSimple1(vectorEntrada);
 
+        //Definir Bias y factor de entrenamiento
+        perceptron.setBias(1.00);
+        perceptron.setFactorAprendizaje(0.5);
+
         // Definir entradas de entrenamiento y resultado deseado
         List<Integer> entradasEntrenamiento = Arrays.asList(1, 2, 3);
         int resultadoDeseado = 1;
@@ -103,7 +107,9 @@ public class MainPerceptronSimple1 {
         */
 
 
+        System.out.println("------------------ ------------------");
         System.out.println("------------------ Entrenamiento Bard ------------------");
+        System.out.println("------------------  ------------------");
                      // Definimos los datos de entrada
                 List<Integer> vectorX = new ArrayList<>();
                 vectorX.add(0);
@@ -113,10 +119,11 @@ public class MainPerceptronSimple1 {
                 List<Double> vectorW = new ArrayList<>();
                 vectorW.add(0.5);
                 vectorW.add(0.5);
-                Double bias = 0.0;
 
                 // Creamos el perceptrón
                 PerceptronSimple1 perceptronBard = new PerceptronSimple1(vectorX);
+        perceptronBard.setFactorAprendizaje(0.5);
+       perceptronBard.setBias(1.00);
 
                 // Definimos los datos de entrenamiento
                 List<List<Integer>> datosEntrenamiento = new ArrayList<>();
@@ -132,16 +139,16 @@ public class MainPerceptronSimple1 {
         perceptronBard.entrenarSegunBard(datosEntrenamiento, vectorY);
 
                 // Probamos el perceptrón con nuevos datos
-                int salidaBard = perceptronBard.activationFunction(Arrays.asList(0, 0), vectorW, bias);
+                int salidaBard = perceptronBard.activationFunction(Arrays.asList(0, 0), vectorW, perceptron.getBias());
                 System.out.println("Salida para (0, 0): " + salidaBard);
 
-        salidaBard = perceptronBard.activationFunction(Arrays.asList(0, 1), vectorW, bias);
+        salidaBard = perceptronBard.activationFunction(Arrays.asList(0, 1), vectorW, perceptron.getBias());
                 System.out.println("Salida para (0, 1): " + salidaBard);
 
-        salidaBard = perceptronBard.activationFunction(Arrays.asList(1, 0), vectorW, bias);
+        salidaBard = perceptronBard.activationFunction(Arrays.asList(1, 0), vectorW, perceptron.getBias());
                 System.out.println("Salida para (1, 0): " + salidaBard);
 
-        salidaBard = perceptronBard.activationFunction(Arrays.asList(1, 1), vectorW, bias);
+        salidaBard = perceptronBard.activationFunction(Arrays.asList(1, 1), vectorW, perceptron.getBias());
                 System.out.println("Salida para (1, 1): " + salidaBard);
 
 

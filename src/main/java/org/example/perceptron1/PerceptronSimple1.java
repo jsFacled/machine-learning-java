@@ -24,6 +24,7 @@ public class PerceptronSimple1 {
             vectorW.add(Math.random());
         }
         System.out.println("Imprimo arrayW:   " + vectorW);
+        System.out.println("El perceptrónSimple1 ha sido creado");
     }
 
 
