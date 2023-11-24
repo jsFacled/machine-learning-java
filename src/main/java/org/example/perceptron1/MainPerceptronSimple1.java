@@ -59,5 +59,18 @@ public class MainPerceptronSimple1 {
             System.out.println("No se le da el crédito");
         }
 
+   /*
+              --------------------------------------
+              ----  Pruebo el PerceptronSimple1 Constructor  ----
+              --------------------------------------
+        */
+        System.out.println("***** --------- Prueba de Constructor ------------- *******");
+        PerceptronSimple1 p1=new PerceptronSimple1(vector1);
+        System.out.println("El p1 tiene: "+ p1.getClass());
+
+
+
+
+
     }
 }
