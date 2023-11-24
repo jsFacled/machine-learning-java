@@ -66,7 +66,83 @@ public class MainPerceptronSimple1 {
         */
         System.out.println("***** --------- Prueba de Constructor ------------- *******");
         PerceptronSimple1 p1=new PerceptronSimple1(vector1);
-        System.out.println("El p1 tiene: "+ p1.getClass());
+        System.out.println("El p1 tiene: "+ p1.toString());
+/*
+              --------------------------------------
+              ----  Pruebo Entrenamiento segun Chatgpt  ----
+              --------------------------------------
+        */
+
+        System.out.println("------------------ Entrenamiento Chatgpt ------------------");
+
+        // Crear un perceptrón con un vector de entrada
+        List<Integer> vectorEntrada = Arrays.asList(1, 2, 3);
+        PerceptronSimple1 perceptron = new PerceptronSimple1(vectorEntrada);
+
+        // Definir entradas de entrenamiento y resultado deseado
+        List<Integer> entradasEntrenamiento = Arrays.asList(1, 2, 3);
+        int resultadoDeseado = 1;
+
+        // Imprimir pesos antes del entrenamiento
+        System.out.println("Pesos antes del entrenamiento: " + perceptron.getVectorW());
+
+        // Entrenar el perceptrón
+        perceptron.entrenarSegunChatgpt(entradasEntrenamiento, resultadoDeseado);
+
+        // Imprimir pesos después del entrenamiento
+        System.out.println("Pesos después del entrenamiento: " + perceptron.getVectorW());
+
+        // Realizar una predicción después del entrenamiento
+        int prediccionDespuesEntrenamiento = perceptron.activationFunction(entradasEntrenamiento, perceptron.getVectorW(), perceptron.getBias());
+        System.out.println("Predicción después del entrenamiento: " + prediccionDespuesEntrenamiento);
+
+/*
+              --------------------------------------
+              ----  Pruebo Entrenamiento segun Bard  ----
+              --------------------------------------
+        */
+
+
+        System.out.println("------------------ Entrenamiento Bard ------------------");
+                     // Definimos los datos de entrada
+                List<Integer> vectorX = new ArrayList<>();
+                vectorX.add(0);
+                vectorX.add(0);
+
+                // Definimos los pesos y el sesgo
+                List<Double> vectorW = new ArrayList<>();
+                vectorW.add(0.5);
+                vectorW.add(0.5);
+                Double bias = 0.0;
+
+                // Creamos el perceptrón
+                PerceptronSimple1 perceptronBard = new PerceptronSimple1(vectorX);
+
+                // Definimos los datos de entrenamiento
+                List<List<Integer>> datosEntrenamiento = new ArrayList<>();
+                datosEntrenamiento.add(Arrays.asList(0, 0));
+                datosEntrenamiento.add(Arrays.asList(0, 1));
+                datosEntrenamiento.add(Arrays.asList(1, 0));
+                datosEntrenamiento.add(Arrays.asList(1, 1));
+
+                // Definimos los valores esperados
+                List<Integer> vectorY = Arrays.asList(0, 1, 1, 1);
+
+                // Entrenamos el perceptrón
+        perceptronBard.entrenarSegunBard(datosEntrenamiento, vectorY);
+
+                // Probamos el perceptrón con nuevos datos
+                int salidaBard = perceptronBard.activationFunction(Arrays.asList(0, 0), vectorW, bias);
+                System.out.println("Salida para (0, 0): " + salidaBard);
+
+        salidaBard = perceptronBard.activationFunction(Arrays.asList(0, 1), vectorW, bias);
+                System.out.println("Salida para (0, 1): " + salidaBard);
+
+        salidaBard = perceptronBard.activationFunction(Arrays.asList(1, 0), vectorW, bias);
+                System.out.println("Salida para (1, 0): " + salidaBard);
+
+        salidaBard = perceptronBard.activationFunction(Arrays.asList(1, 1), vectorW, bias);
+                System.out.println("Salida para (1, 1): " + salidaBard);
 
 
 

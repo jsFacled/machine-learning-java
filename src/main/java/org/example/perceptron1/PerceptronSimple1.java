@@ -14,6 +14,8 @@ public class PerceptronSimple1 {
 
     // Definir Constructor
     public PerceptronSimple1 (List<Integer> vectorX){
+        // Se crea Perceptron con vector de Entradas.
+        this.vectorX=vectorX;
         // Inicializar pesos con valores aleatorios
         int cantidadX = vectorX.size();
         vectorW = new ArrayList<>(cantidadX);  //Asigno cantidad de elementos al array
@@ -58,6 +60,53 @@ public class PerceptronSimple1 {
         }
         return resultado;
     }
+
+/*
+----------------------  Entrenadores ----------------------
+==========================================================
+ */
+public void entrenarSegunChatgpt(List<Integer> entradas, int resultadoDeseado) {
+    // Lógica de entrenamiento básica: ajustar los pesos si la predicción es incorrecta
+    int prediccion = activationFunction(entradas, vectorW, bias);
+
+    if (prediccion != resultadoDeseado) {
+        // Ajustar pesos y bias según la lógica de entrenamiento
+        for (int i = 0; i < vectorW.size(); i++) {
+            double nuevoPeso = vectorW.get(i) + factorAprendizaje * (resultadoDeseado - prediccion) * entradas.get(i);
+            vectorW.set(i, nuevoPeso);
+        }
+        // Ajustar el bias
+        bias = bias + factorAprendizaje * (resultadoDeseado - prediccion);
+    }
+}
+
+    public void entrenarSegunBard(List<List<Integer>> datosEntrenamiento, List<Integer> vectorY) {
+        // Repite el proceso de entrenamiento para un número determinado de épocas
+        for (int epoca = 0; epoca < 100; epoca++) {
+            // Itera sobre cada dato de entrenamiento
+            for (int i = 0; i < datosEntrenamiento.size(); i++) {
+                List<Integer> vectorX = datosEntrenamiento.get(i);
+                int salidaEsperada = vectorY.get(i);
+
+                // Calcula la salida actual
+                int salidaActual = activationFunction(vectorX, vectorW, bias);
+
+                // Calcula el error
+                int error = salidaEsperada - salidaActual;
+
+                // Actualiza los pesos
+                for (int j = 0; j < vectorW.size(); j++) {
+                    vectorW.set(j, vectorW.get(j) + error * factorAprendizaje * vectorX.get(j));
+                }
+
+                // Actualiza el sesgo
+                Double delta = error * factorAprendizaje;
+                Double nuevoBias = bias + delta;
+                setBias(nuevoBias);
+            }
+        }
+    }
+
 
 
     /*
