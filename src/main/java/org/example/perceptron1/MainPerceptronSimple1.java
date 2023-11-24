@@ -36,7 +36,8 @@ public class MainPerceptronSimple1 {
         */
 
 // Definimos los pesos y el umbral
-        double[] pesos = {0.5, 0.2};
+        List<Double> pesos = Arrays.asList(0.5, 0.2);
+        //double[] pesos = {0.5, 0.2};
         double umbral = 0.5;
 
         // Definimos la edad y el ahorro de la persona
